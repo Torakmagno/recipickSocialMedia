@@ -22,6 +22,7 @@ public class Receta {
 	private Integer id;
 	private String nombre;
 	private String descripcion;
+	private String ingredientes;
 	@Transient
 	private int idRecetaOriginal;
 	
@@ -115,13 +116,6 @@ public class Receta {
 	}
 
 
-	@Override
-	public String toString() {
-		return "Receta [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", recetaOriginal="
-				+ recetaOriginal + ", usuario=" + usuario + ", likes=" + likes + "]";
-	} //comentarios=" + comentarios + ",
-
-
 	public int getIdRecetaOriginal() {
 		return idRecetaOriginal;
 	}
@@ -130,5 +124,27 @@ public class Receta {
 	public void setIdRecetaOriginal(int idRecetaOriginal) {
 		this.idRecetaOriginal = idRecetaOriginal;
 	}
+
+
+	public String getIngredientes() {
+		return ingredientes;
+	}
+
+
+	public void setIngredientes(String ingredientes) {
+		this.ingredientes = ingredientes;
+	}
+
+
+	
+
+
+	@Override
+	public String toString() {
+		return "Receta [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", ingredientes="
+				+ ingredientes + ", idRecetaOriginal=" + idRecetaOriginal + ", recetaOriginal="
+				+ recetaOriginal + ", usuario=" + usuario + ", likes=" + likes + "]";
+	}//comentarios=" + comentarios + "
+	
 
 }
