@@ -23,6 +23,7 @@ public class Receta {
 	private String nombre;
 	private String descripcion;
 	private String ingredientes;
+	private String imagen;
 	@Transient
 	private int idRecetaOriginal;
 	
@@ -138,13 +139,22 @@ public class Receta {
 
 	
 
-
 	@Override
 	public String toString() {
 		return "Receta [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", ingredientes="
-				+ ingredientes + ", idRecetaOriginal=" + idRecetaOriginal + ", recetaOriginal="
+				+ ingredientes + ", imagen=" + imagen + ", idRecetaOriginal=" + idRecetaOriginal + ", recetaOriginal="
 				+ recetaOriginal + ", usuario=" + usuario + ", likes=" + likes + "]";
-	}//comentarios=" + comentarios + "
+	}
+
+
+	public String getImagen() {
+		return imagen;
+	}
+
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
 	
 
 }

@@ -10,7 +10,7 @@
 
     <title>RECIPICK</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"><link>
-
+<link rel="stylesheet" th:href="@{~/css/imagenes.css}">
   <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
@@ -24,8 +24,8 @@
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <div class="container">
-          <h3 class="d-flex text-align center">Find the recipe you're looking for.</h3>
+        <div class="container m-5">
+        <h3 class="d-flex justify-content-center font-italic">Find the recipe you're looking for and....pick it quick!</h3>
         </div>
       </div>
       <hr>
@@ -40,20 +40,22 @@
 	    <th>Photo</th>
 	    <th>Ingredients (4 people)</th>
 	    <th>How to prepare</th>
-	    <th>User</th>
-	    <th>More</th>
+	    <th>Action</th>
+	    <!--<th>User</th>-->
+
 	  </tr>
 	  
 	  <tr th:each="receta : ${recetas} ">
 	    <td th:text="${receta.nombre}"></td>
-	    <td>
-	    	<img th:src="@{/images/{img}" width="136" height="136" >
-	    </td>
+	    <td><img th:src="@{~/images/{img} (img=${receta.imagen})}" alt="receta" class="recetaimagen"></td>
 	    <td th:text="${receta.ingredientes}"></td>
 	    <td th:text="${receta.descripcion}"></td>
 	    <!--   <td th:text="${receta.usuario.username}"></td>-->
 	    <td> 
-	    <a th:href="@{/home/recipes/edit/{id}  (id=${receta.id}) }" class="btn btn-success btn-sm" role="button" title="Edit or Share"><i class="fas fa-share-alt" aria-hidden="true"></i> <i class="fas fa-pencil-alt"></i></a><br>
+	    <a th:href="@{/home/recipes/edit/{id}  (id=${receta.id}) }" id="edishare" class="btn btn-success btn-sm" role="button" title="Edit or Share">
+	    <div class="d-flex flex-column"><i class="fas fa-share-alt mb-1" aria-hidden="true"></i>
+	    <i class="fas fa-pencil-alt"></i>
+	    </div></a><br>
         <br><a th:href="@{/home/recipes/delete/{id}  (id=${receta.id}) }" onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm" role="button" title="Delete"><i class="fas fa-trash" aria-hidden="true"></i></a>
         </td>
       </tr>	 

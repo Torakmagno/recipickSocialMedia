@@ -1,5 +1,6 @@
 package recipick.servidor.recipickSocialMedia.entity;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -24,6 +25,7 @@ public class Usuario {
 	private String email;
 	private String password;
 	private String username;
+	private Date fechaRegistro;
 	
 	@OneToMany(fetch = FetchType.EAGER) //un usuario puede tener varias recetas
 	@JoinColumn(name = "usuarios")
@@ -124,17 +126,22 @@ public class Usuario {
 	}
 
 
-	@Override
-	public String toString() {
-		return "Usuario [id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email
-				+ ", password=" + password + ", username=" + username + ", recetas=" + recetas + ", likes=" + likes
-				+ "]";
+	public Date getFechaRegistro() {
+		return fechaRegistro;
 	}
 
 
+	public void setFechaRegistro(Date fechaRegistro) {
+		this.fechaRegistro = fechaRegistro;
+	}
 
 
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email
+				+ ", password=" + password + ", username=" + username + ", fechaRegistro=" + fechaRegistro
+				+ ", recetas=" + recetas + ", likes=" + likes + "]";
+	}
 
-	
 
 }

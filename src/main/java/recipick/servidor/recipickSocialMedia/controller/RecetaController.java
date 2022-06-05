@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -40,6 +41,9 @@ public class RecetaController {
 	
 	@Autowired
    	private IUsuarioService UsuarioService;
+	
+	//@Value("${recipick.ruta}")
+	//private String ruta;
 	
 	/*@PostMapping("/recipes")
 	public String mostrarIndex(Model model) {

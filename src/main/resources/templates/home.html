@@ -4,15 +4,12 @@
 <meta charset="ISO-8859-1">
 <title>RECIPICK</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"><link>
+<link rel="stylesheet" th:href="@{~/css/imagenes.css}">
+  <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+    <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
 
-  <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
-    <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
-  <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
-    <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
     
   </head>
 
@@ -22,28 +19,28 @@
 <hr>
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <div class="container">
-          <h3>Find the recipe you're looking for.</h3>
+        <div class="container d-flex flex-column">
+        <h3 class="d-flex justify-content-center font-italic">Why RECIPICK?
+        We brought this social media to life to innovate the world of home cooking. Here you can discover original recipes from all around the world, try them and then share or edit your own version. You can also create a new one, tasting new flavors and let your friends know! Don't miss the opportunity to enjoy cooking and discover your talent!</h3>
         </div>
       </div>
-      <hr>
-
-<div class="container d-flex justify-content-center">
+     
+<div class="container d-flex justify-content-center mb-5">
             <div class="row">
                 <div class="col-sm-12">
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="../images/carbonara.jpg" class="d-block w-150" alt="carbonara">                                 
+                                <img src="../images/carbonara.jpg" class="d-block w-150 rounded" alt="carbonara">                                 
                             </div>
                             <div class="carousel-item">
-                                <img src="../images/napolitana.jpg" class="d-block w-150" alt="pizza">                                	
+                                <img src="../images/napolitana.jpg" class="d-block w-150 rounded" alt="pizza">                                	
                             </div>
                             <div class="carousel-item">
-                                <img src="../images/lasagna.jpg" class="d-block w-150" alt="lasaña">    
+                                <img src="../images/lasagna.jpg" class="d-block w-150 rounded" alt="lasaña">    
                             </div>
                              <div class="carousel-item">
-                                <img src="../images/tortilla.jpg" class="d-block w-150" alt="tortilla">
+                                <img src="../images/tortilla.jpg" class="d-block w-150 rounded" alt="tortilla">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -58,7 +55,7 @@
                 </div>
             </div>
         </div>
-<hr>
+
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>   

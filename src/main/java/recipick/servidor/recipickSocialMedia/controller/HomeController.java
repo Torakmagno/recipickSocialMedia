@@ -27,7 +27,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import recipick.servidor.recipickSocialMedia.entity.Receta;
 import recipick.servidor.recipickSocialMedia.entity.Usuario;
 import recipick.servidor.recipickSocialMedia.service.IRecetaService;
@@ -47,10 +46,8 @@ public class HomeController {
 	@Autowired
 	private UsuarioService usuarioService;
 	
-
-	
-	/*@Autowired
-	private PasswordEncoder passwordEncoder;*/
+	//@Autowired
+	//private PasswordEncoder passwordEncoder;
 	
 	@GetMapping("/")
 	public String mostrarHome(Model model) {
@@ -67,57 +64,15 @@ public class HomeController {
 		return "listausuarios";
 	}
 	
-	/* no se si va en home o en recetas, me imagino que en recetas para que podamos acceder una vez estemos en la lista
-	@GetMapping("/detalle")
-	public String mostrarDetalle(Model model) {
-		Receta receta = new Receta();
-		receta.setNombre("");
-		receta.setDescripcion("");
-		model.addAttribute("receta", receta);
-		return "detalle";
-	}*/
-	
-	/*@GetMapping("/userslist")
-	public String mostrarListado(Model model) {
-		List<String> lista = new LinkedList<String>();
-		model.addAttribute("usuarios", lista);
-		
-		return "listausuarios";
-	}*/
 	
 	@GetMapping("/signup")
 	public String signup(Usuario usuario) {
 		return "formRegistro";
 	}
-	
-	/*@PostMapping("/signup")
-	public String guardarRegistro(Usuario usuario, RedirectAttributes attributes) {
 		
-		String pwdPlano = usuario.getPassword();
-		String psdEncriptado = passwordEncoder.encode(pwdPlano);
-		usuario.setPassword(psdEncriptado);
-		
-		
-		/**
-		 * Guardamos el usuario en la base de datos.
-		 
-		UsuarioService.guardar(usuario);
-				
-		attributes.addFlashAttribute("msg", "El registro fue guardado correctamente!");
-		
-		return "redirect:/usuarios/index";
-	}
-	
-	@GetMapping("/bcrypt/{texto}")
-	@ResponseBody
-	public String encriptar(@PathVariable("texto") String texto) {
-		return texto + "Encriptado en Bcrypt: " + passwordEncoder.encode(texto);
-		
-	}*/
-	
 	@GetMapping("/login")
 	public String mostrarLogin() {
-		return "formLogin";
+		return "/";
 	}
 	
 	@GetMapping("/logout")
@@ -129,9 +84,32 @@ public class HomeController {
 		
 		return "redirect:/login";
 	}
+	@PostMapping("/signup")
+	public String guardarRegistro(Usuario usuario, RedirectAttributes attributes) {
+		
+		String pwdPlano = usuario.getPassword();
+		
+		usuario.setPassword(pwdPlano);
+		usuario.setFechaRegistro(new Date()); // Fecha de Registro, la fecha actual del servidor
+		
+		/**
+		 * Guardamos el usuario en la base de datos. El Perfil se guarda automaticamente
+		 */
+		usuarioService.guardar(usuario);
+				
+		attributes.addFlashAttribute("msg", "User correctly registered!");
+		
+		return "redirect:/recipes";
+	}
 	
+	/*@GetMapping("/bcrypt/{texto}")
+	@ResponseBody
+	public String encriptar(@PathVariable("texto") String texto) {
+	return texto + "Encriptado en Bcrypt: " + passwordEncoder.encode(texto);
+		
+	}*/
 	
-	/*@GetMapping("/index")
+	@GetMapping("/index")
 	public String mostrarIndex(Authentication auth, HttpSession session) {
 		String username = auth.getName();
 		System.out.println("Nombre de usuario:" + username);
@@ -139,10 +117,10 @@ public class HomeController {
 		for(GrantedAuthority rol: auth.getAuthorities()) {
 			System.out.println("Rol:" + rol.getAuthority());
 		}
-		Usuario usuario = UsuarioService.buscarPorUsername(username);
+		Usuario usuario = usuarioService.buscarPorUsername(username);
 		
 		if(session.getAttribute("usuario") == null) {
-			Usuario usuario1 = UsuarioService.buscarPorUsername(username);
+			Usuario usuario1 = usuarioService.buscarPorUsername(username);
 			usuario1.setPassword(null);
 			System.out.println("Objeto usuario" + usuario1);
 			session.setAttribute("usuario", usuario1);
@@ -150,7 +128,7 @@ public class HomeController {
 		}
 		
 		return "redirect:/";
-	}*/
+	}
 	
 	//con InitBinder, si detecta strings vacíos en el data binding los seteará a NULL
 	@InitBinder

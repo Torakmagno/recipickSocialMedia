@@ -32,42 +32,43 @@ public class WebSecurityConf extends WebSecurityConfigurerAdapter {
 						//+ "inner join Perfiles p on p.id = up.idPerfil " + "where u.username = ?");
 	}
 	
-	/*@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/bootstrap/**", 
-											"/images/**",
-											"/tinymce/**",
-											"/logos/**").permitAll().antMatchers("/", 
-																				"/signup",
-																				"/search",
-																				"/bcrypt/**",
-																				"/vacantes/view/**").permitAll().antMatchers("/vacantes/**").hasAnyAuthority("SUPERVISOR","ADMINISTRADOR")
-																												.antMatchers("/categorias/**").hasAnyAuthority("SUPERVISOR","ADMINISTRADOR")
-																												.antMatchers("/solicitudes/index").hasAnyAuthority("SUPERVISOR","ADMINISTRADOR")
-																												.antMatchers("/solicitudes/index/paginas").hasAnyAuthority("SUPERVISOR","ADMINISTRADOR")
-																												.antMatchers("/usuarios/**").hasAnyAuthority("ADMINISTRADOR")
-																												.antMatchers("/solicitudes/crear/**").hasAnyAuthority("USUARIO")
-																												.antMatchers("/solicitudes/save/**").hasAnyAuthority("USUARIO" ,"ADMINISTRADOR")
-																												.antMatchers("/solicitudes/delete/**").hasAnyAuthority("SUPERVISOR","ADMINISTRADOR")
-																												.antMatchers("/solicitudes/edit/**").hasAnyAuthority("SUPERVISOR","ADMINISTRADOR")
-																												
-																												.anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll();
-	}*/
-	
-	/*@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
-	
-}*/
 
+
+/*@Override
+protected void configure(HttpSecurity http) throws Exception {
+	http.authorizeRequests().antMatchers("/bootstrap/**", 
+										"/images/**",
+										"/tinymce/**",
+										"/logos/**").permitAll().antMatchers("/", 
+																			"/signup",														
+																			"/bcrypt/**",
+																			"/home/recipes/**").permitAll().antMatchers("/recipes/**").hasAnyAuthority("USER","ADMIN")
+																											.antMatchers("/users/**").hasAnyAuthority("ADMIN")
+																											.antMatchers("/recipes/create/**").hasAnyAuthority("USER","ADMIN")
+																											.antMatchers("/recipes/save/**").hasAnyAuthority("USER","ADMIN")
+																											.antMatchers("/recipes/delete/**").hasAnyAuthority("ADMIN")
+																											.antMatchers("/recipes/edit/**").hasAnyAuthority("USER","ADMIN")
+																											
+																											.anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll();
+}
+}
+
+
+  @Bean
+ 
+public PasswordEncoder passwordEncoder() {
+	return new BCryptPasswordEncoder();
+}
+
+}
+*/
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-            .authorizeRequests()
-            .antMatchers("/**").authenticated()
-            .and().formLogin();
+    	http.authorizeRequests().antMatchers("/**").authenticated()
+        .and().formLogin();
     }
+
+  
 
     /* @Override
         protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -79,8 +80,9 @@ public class WebSecurityConf extends WebSecurityConfigurerAdapter {
                     .withUser("usuario2")
                     .password("1234")
                     .authorities("USER");
-        }*/
-     @Bean
+        }
+        */
+    @Bean
      public PasswordEncoder passwordEncoder() {
          return NoOpPasswordEncoder.getInstance();
      }
