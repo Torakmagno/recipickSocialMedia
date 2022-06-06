@@ -117,7 +117,7 @@ public class Receta {
 	}
 
 
-	public int getIdRecetaOriginal() {
+	public Integer getIdRecetaOriginal() {
 		return idRecetaOriginal;
 	}
 

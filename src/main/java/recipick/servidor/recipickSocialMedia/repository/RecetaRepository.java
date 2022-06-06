@@ -8,5 +8,6 @@ import recipick.servidor.recipickSocialMedia.entity.Receta;
 
 public interface RecetaRepository extends JpaRepository<Receta, Integer> {
 
+	public Receta findById(int id);
 	
 }

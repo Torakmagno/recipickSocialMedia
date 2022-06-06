@@ -82,19 +82,19 @@
 				<ul class="pagination justify-content-center">
 					<li class="page-item"
 						th:classappend="${recetas.number == 0 ? 'disabled' : ''}"><a
-						th:href="@{/recipes(page=${recetas.number - 1})}"
+						th:href="@{/home/recipes(page=${recetas.number - 1})}"
 						class="page-link">Previous</a></li>
 
 					<li class="page-item"
 						th:classappend="${i eq recetas.number + 1} ? 'active'"
 						th:each="i : ${#numbers.sequence( 1, recetas.totalPages, 1)}">
 						<a class="page-link"
-						th:href="@{/recipes?page={tmpPag} (tmpPag=${i-1}) }"
+						th:href="@{/home/recipes?page={tmpPag} (tmpPag=${i-1}) }"
 						th:text="${i}" th:title="${'Page '+ i}" data-toggle="tooltip"></a>
 					</li>
 					<li class="page-item"
 						th:classappend="${recetas.number == (recetas.totalPages - 1) ? 'disabled' : ''}">
-						<a th:href="@{/recipes(page=${recetas.number + 1})}"
+						<a th:href="@{/home/recipes(page=${recetas.number + 1})}"
 						class="page-link">Next</a>
 					</li>
 				</ul>

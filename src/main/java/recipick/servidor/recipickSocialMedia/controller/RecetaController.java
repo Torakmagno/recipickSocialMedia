@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
@@ -29,6 +31,7 @@ import recipick.servidor.recipickSocialMedia.entity.Receta;
 import recipick.servidor.recipickSocialMedia.entity.Usuario;
 import recipick.servidor.recipickSocialMedia.service.IRecetaService;
 import recipick.servidor.recipickSocialMedia.service.IUsuarioService;
+import recipick.servidor.recipickSocialMedia.service.util.Utilidades;
 
 
 
@@ -42,6 +45,8 @@ public class RecetaController {
 	@Autowired
    	private IUsuarioService UsuarioService;
 	
+	@Value("${recipick.ruta.imagenes}")
+	private String ruta;
 	//@Value("${recipick.ruta}")
 	//private String ruta;
 	
@@ -54,25 +59,34 @@ public class RecetaController {
 	
 	@GetMapping("/recipes/create")
 	public String crear(Receta receta) {
-		return "crearrecetas";
+		return "crearreceta";
 	}
 	
 	@PostMapping("/recipes/save")
-	public String guardar(Receta receta, BindingResult result, RedirectAttributes attributes,Authentication auth) {
+	public String guardar(Receta receta, BindingResult result, RedirectAttributes attributes,Authentication auth ,@RequestParam("archivo") MultipartFile imagen) {
 		Usuario usuario=UsuarioService.buscarPorUsername(auth.getName());
-		if (result.hasErrors()){		
+	if (result.hasErrors()){		
 			System.out.println("Existing errors!");
-			return "redirect :/recipes";
+			return "redirect:/home/recipes";
 		}	
-		
-		Receta recetaOriginal= RecetaService.buscarPorId(receta.getIdRecetaOriginal());
+		if (!imagen.isEmpty()) {
+			
+			String archivo = Utilidades.guardarArchivo(imagen, ruta);
+			if (archivo != null){ 
+				receta.setImagen(archivo);
+			}
+		}
+		if (receta.getIdRecetaOriginal() != null) {
+			Receta recetaOriginal= RecetaService.buscarPorId(receta.getIdRecetaOriginal());
 		receta.setRecetaOriginal(recetaOriginal);
+		}
 		receta.setUsuario(usuario);
 		
 		// Guadamos el objeto receta en la bd
 		RecetaService.guardar(receta);
 		attributes.addFlashAttribute("msg", "Correctly saved!!");		
-		return "redirect :/recipes";
+		return "redirect:/home/recipes";
+		
 	}
 	
 	@GetMapping("/recipes/delete/{id}")
@@ -80,7 +94,7 @@ public class RecetaController {
 		System.out.println("Deleting recipe with id: " + idReceta);
 		RecetaService.eliminar(idReceta);
 		attributes.addFlashAttribute("msg","Recipe correctly deleted");
-		return "redirect :/recipes";
+		return "redirect:/home/recipes";
 	}
 	
 	@GetMapping("/recipes/edit/{id}")

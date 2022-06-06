@@ -39,7 +39,7 @@ public class RecetaService implements IRecetaService {
 
 	@Override
 	public Receta buscarPorId(int id) {
-		return this.repoReceta.findById(id).get();
+		return this.repoReceta.findById(id);
 	}
 
 	@Override

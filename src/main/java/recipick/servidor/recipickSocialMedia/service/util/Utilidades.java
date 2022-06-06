@@ -2,6 +2,8 @@ package recipick.servidor.recipickSocialMedia.service.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class Utilidades {
@@ -13,7 +15,7 @@ public class Utilidades {
 		String nombreFinal = randomAlphaNumeric(8) + nombreOriginal;
 		try {
 			// Formamos el nombre del archivo para guardarlo en el disco duro.
-			File imageFile = new File(ruta+ nombreFinal);
+			File imageFile = (Paths.get(ruta+ nombreFinal).toFile());
 			System.out.println("Archivo: " + imageFile.getAbsolutePath());
 			//Guardamos fisicamente el archivo en HD.
 			multiPart.transferTo(imageFile);

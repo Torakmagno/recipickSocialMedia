@@ -30,7 +30,7 @@
 					<strong>New recipe</strong>
 				</h4>
 				<div class="card-body">
-					<form th:action="@{/home/recipes/save}" method="get"
+					<form th:action="@{/home/recipes/save}" method="post"
 						th:object="${receta}" enctype="multipart/form-data">
 						<div th:if="${#fields.hasErrors('*')}" class='alert alert-danger'
 							role='alert'>
@@ -43,7 +43,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="nombre">Name</label> <input type="text"
-										class="form-control" id="name" name="name"
+										class="form-control" id="nombre" name="nombre"
 										placeholder="Write the name of the recipe" required="required">
 								</div>
 							</div>
@@ -51,7 +51,7 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="image">Image</label> <input type="file"
+									<label for="image">Image</label><input type="file"
 										class="form-control-file" name="archivo" id="archivo">
 								</div>
 							</div>
@@ -60,7 +60,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="nombre">Ingredients</label> <input type="text"
-										class="form-control" id="ingre" name="ingre"
+										class="form-control" id="ingredientes" name="ingredientes"
 										placeholder="Write the ingredients of the recipe"
 										required="required">
 								</div>
@@ -76,10 +76,8 @@
 								</div>
 							</div>
 						</div>
-						<button type="submit" title="guardarreceta"
-							class="btn btn-primary">
-							<i class="fas fa save-alt"></i>
-						</button>
+						<td><input class="btn btn-warning" type="submit" value="Create" /><i
+					class="fas fa save-alt"></i></td>
 					</form>
 				</div>
 			</div>
