@@ -1,20 +1,29 @@
-<nav th:fragment="menu-principal" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-<div class="collapse navbar-collapse " id="navbarsExampleDefault">
-<img id="logomenu" class="mr-2" th:src ="@{~/images/logos/logo3.png}">
-    <a class="nav-link text-white btn btn-warning nav-item" th:href="@{/}">Home</a>&nbsp; 
-    <a class="nav-link text-white btn btn-primary nav-item" th:href="@{/home/recipes}">Recipes</a>&nbsp;
-	<a class="nav-link text-white btn btn-danger nav-item" th:href="@{/users/userslist}">Users</a>&nbsp;
-</div>
-<h2 class="font-italic text-warning">Recipick Social Media</h2>
-	
-<div class="collapse navbar-collapse d-flex flex-row justify-content-end ">
- 	<a class="btn btn-success" th:href="@{/login}">Login</a>&nbsp;
-    <a class="btn btn-primary" th:href="@{/signup}">Sign up</a>&nbsp;
-	<span class="text-light" >Bienvenido</span>&nbsp;<span class="text-light" sec:authentication="name"></span>&nbsp;  <!--    sec:authentication="name"--> 
-	<a class="btn btn-danger" th:href="@{/logout}">Logout</a>&nbsp;
-</div>
+<nav th:fragment="menu-principal"
+	class="navbar navbar-expand-md fixed-top bg-secondary bg-gradient">
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarsExampleDefault"
+		aria-controls="navbarsExampleDefault" aria-expanded="false"
+		aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse " id="navbarsExampleDefault">
+		<img id="logomenu" class="mr-2" th:src="@{~/images/logos/logo3.png}">
+		<a class="nav-link text-white btn btn-warning nav-item" th:href="@{/}">Home</a>&nbsp;
+		<a class="nav-link text-white btn btn-primary nav-item"
+			th:href="@{/home/recipes}">Recipes</a>&nbsp; <a
+			class="nav-link text-white btn btn-danger nav-item"
+			th:href="@{/users/userslist}">Users</a>&nbsp;
+	</div>
+	<h2 class="font-italic text-warning">Recipick Social Media</h2>
+
+	<div
+		class="collapse navbar-collapse d-flex flex-row justify-content-end ">
+		<a class="btn btn-success" th:href="@{/login}">Login</a>&nbsp; <a
+			class="btn btn-primary" th:href="@{/signup}">Sign up</a>&nbsp; <span
+			class="text-light">Bienvenido</span>&nbsp;<span class="text-light"
+			sec:authentication="name"></span>&nbsp;
+		<!--    sec:authentication="name"-->
+		<a class="btn btn-danger" th:href="@{/logout}">Logout</a>&nbsp;
+	</div>
 </nav>
 <hr>

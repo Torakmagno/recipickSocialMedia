@@ -3,47 +3,63 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Edit or share your recipe!</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"><link>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link>
+<link rel="stylesheet" th:href="@{~/css/imagenes.css}">
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+<link th:href="@{/bootstrap/css/sticky-footer-navbar.css}"
+	rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+	rel="stylesheet">
+</head>
 
-  <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
-    <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
-    <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
-  </head>
 
-
-  <body>
-	<header th:insert="fragments/menu :: menu-principal"></header><br>
+<body>
+	<header th:insert="fragments/menu :: menu-principal"></header>
+	<br>
 	<br>
 	<br>
 	<h2 class="font-italic">Edit and share your recipe!</h2>
 	<hr>
-       <form th:action="@{/home/recipes/save}" method="post" th:object="${receta}"enctype="multipart/form-data">
-         <input type="hidden" th:field="*{idRecetaOriginal}"/>
-             <table>
-                <tr>
-                    <td><label class="font-weight-bold" for="nombre">Name</label></td>
-                    <td><input type=text th:field="*{nombre}"/></td>
-                </tr>
-                <tr>
-                    <td><label class="font-weight-bold" for="descripcion">Description</label></td>
-                    <td><input type=text th:field="*{descripcion}"/></td>
-                </tr>
-                  <tr>
-                    <td><input class="btn btn-primary" type="submit" value="Share"/><i class="fas fa save-alt"></i></td>
-                </tr>
-            </table>
-        </form>
-        
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<form th:action="@{/home/recipes/save}" method="post"
+		th:object="${receta}" enctype="multipart/form-data">
+		<input type="hidden" th:field="*{idRecetaOriginal}" />
+		<table>
+			<tr>
+				<td><label class="font-weight-bold" for="nombre">Name</label></td>
+				<td><input type=text th:field="*{nombre}" /></td>
+			</tr>
+			<tr>
+				<td><label class="font-weight-bold" for="photo">Photo</label></td>
+				<td><input type=file th:field="*{imagen}" /></td>
+			</tr>
+			<tr>
+				<td><label class="font-weight-bold" for="ingredientes">Ingredients</label></td>
+				<td><input type=text th:field="*{ingredientes}" /></td>
+			</tr>
+			<tr>
+				<td><label class="font-weight-bold" for="descripcion">Description</label></td>
+				<td><input type=text th:field="*{descripcion}" /></td>
+			</tr>
+			<tr>
+				<td><input class="btn btn-primary" type="submit" value="Share" /><i
+					class="fas fa save-alt"></i></td>
+			</tr>
+		</table>
+	</form>
+
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<footer th:insert="fragments/footer :: pie-pagina" class="footer"></footer>
 
-    <!-- Bootstrap core JavaScript
+	<!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 
 </body>
 </html>

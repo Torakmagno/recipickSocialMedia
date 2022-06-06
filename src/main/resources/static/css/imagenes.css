@@ -24,4 +24,11 @@ border-radius: 10px;
 }
 
 
+#listado {
+	table-layout: fixed;
+}
 
+.table td {
+	width: 130px;
+  overflow: auto;
+}

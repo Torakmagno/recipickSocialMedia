@@ -1,78 +1,97 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
-    <title>Recipick | Sign up form</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"><link>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="favicon.ico">
+<title>Recipick | Sign up form</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link>
 <link rel="stylesheet" th:href="@{~/css/imagenes.css}">
-  <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
-    <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
-  </head>
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+<link th:href="@{/bootstrap/css/sticky-footer-navbar.css}"
+	rel="stylesheet">
+</head>
 
-  <body>
-<header th:insert="fragments/menu :: menu-principal"></header>
-    
+<body>
+	<header th:insert="fragments/menu :: menu-principal"></header>
 
-    <main role="main" class="mt-5"><br>
-    <br>    
-      <div class="container"> 
 
-        <div class="card font-italic m-2">
-                       
-          <div class="card-body">
-            <form th:action="@{/signup}" th:object="${usuario}" method="post">
-            <h3 class="card-header">Recipick - Sign up form</h3><br>              
-              <div class="row">
-                <div class="col-md-4"> 
-                  <div class="form-group">
-                    <label for="nombre">Name</label>
-                    <input type="text" class="form-control" th:field="*{nombre}" id="nombre" name="nombre" placeholder="Write your name" required="required">
-                  </div>
-                </div>
-                <div class="col-md-4"> 
-                  <div class="form-group">
-                    <label for="surname">Surname(s)</label>
-                    <input type="text" class="form-control" th:field="*{apellidos}" id="surname" name="surname" placeholder="Write your surname" required="required">
-                  </div> 
-                </div>    
-                <div class="col-md-4"> 
-                  <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" class="form-control" th:field="*{email}" id="email" name="email" placeholder="Write your e-mail" required="required">
-                  </div> 
-                </div>    
-                <div class="col-md-4"> 
-                  <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" th:field="*{username}" id="username" name="username" placeholder="Choose your username" required="required">
-                  </div>
-                </div>
-                <div class="col-md-4"> 
-                  <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" th:field="*{password}" id="password" name="password" placeholder="Choose your password" required="required">
-                  </div>
-                </div>
-              </div>                  
-              <hr>
-              <button type="submit" title="I want to sign up" class="btn btn-warning text-white">Sign up</button>  
-            </form>
-          </div>
-        </div>
-      </div> <!-- /container -->
+	<main role="main" class="mt-5">
+		<br> <br>
+		<div class="container">
 
-    </main>
+			<div class="card font-italic m-2">
 
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+				<div class="card-body">
+					<form th:action="@{/signup}" th:object="${usuario}" method="post">
+						<h3 class="card-header">Recipick - Sign up form</h3>
+						<br>
+						<div class="row">
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="nombre">Name</label> <input type="text"
+										class="form-control" th:field="*{nombre}" id="nombre"
+										name="nombre" placeholder="Write your name"
+										required="required">
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="surname">Surname(s)</label> <input type="text"
+										class="form-control" th:field="*{apellidos}" id="surname"
+										name="surname" placeholder="Write your surname"
+										required="required">
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="email">E-mail</label> <input type="email"
+										class="form-control" th:field="*{email}" id="email"
+										name="email" placeholder="Write your e-mail"
+										required="required">
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="username">Username</label> <input type="text"
+										class="form-control" th:field="*{username}" id="username"
+										name="username" placeholder="Choose your username"
+										required="required">
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="password">Password</label> <input type="password"
+										class="form-control" th:field="*{password}" id="password"
+										name="password" placeholder="Choose your password"
+										required="required">
+								</div>
+							</div>
+						</div>
+						<hr>
+						<button type="submit" title="I want to sign up"
+							class="btn btn-warning text-white">Sign up</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- /container -->
+
+	</main>
+
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<footer th:insert="fragments/footer :: pie-pagina" class="footer"></footer>
 
-    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-  </body>
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+</body>
 </html>
