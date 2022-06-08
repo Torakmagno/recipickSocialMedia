@@ -49,6 +49,8 @@
 					<th>Name</th>
 					<th>Surname(s)</th>
 					<th>E-mail</th>
+					<th>Username</th>
+					<th>Password</th>
 					<th>Action</th>
 				</tr>
 
@@ -57,6 +59,8 @@
 					<td th:text="${usuario.nombre}"></td>
 					<td th:text="${usuario.apellidos}"></td>
 					<td th:text="${usuario.email}"></td>
+					<td th:text="${usuario.username}"></td>
+					<td th:text="${usuario.password}"></td>
 					<td><a th:href="@{/users/delete/{id}  (id=${usuario.id}) }"
 						onclick="return confirm('Are you sure?')"
 						class="btn btn-danger btn-sm" role="button" title="Delete"><i

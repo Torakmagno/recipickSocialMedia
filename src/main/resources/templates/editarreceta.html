@@ -22,34 +22,36 @@
 	<br>
 	<br>
 	<br>
-	<h2 class="font-italic">Edit and share your recipe!</h2>
-	<hr>
-	<form th:action="@{/home/recipes/save}" method="post"
-		th:object="${receta}" enctype="multipart/form-data">
-		<input type="hidden" th:field="*{idRecetaOriginal}" />
-		<table>
-			<tr>
-				<td><label class="font-weight-bold" for="nombre">Name</label></td>
-				<td><input type=text th:field="*{nombre}" /></td>
-			</tr>
-			<tr>
-				<td><label class="font-weight-bold" for="photo">Photo</label></td>
-				<td><input type=file name="archivo" id="archivo"/></td>
-			</tr>
-			<tr>
-				<td><label class="font-weight-bold" for="ingredientes">Ingredients</label></td>
-				<td><input type=text th:field="*{ingredientes}" /></td>
-			</tr>
-			<tr>
-				<td><label class="font-weight-bold" for="descripcion">Description</label></td>
-				<td><input type=text th:field="*{descripcion}" /></td>
-			</tr>
-			<tr>
-				<td><input class="btn btn-primary" type="submit" value="Share" /><i
-					class="fas fa save-alt"></i></td>
-			</tr>
-		</table>
-	</form>
+	<div class="d-flex justify-content-center ">
+	<form th:action="@{/home/recipes/save}" method="post" th:object="${receta}" enctype="multipart/form-data">
+			<h2 class="font-italic mt-5">Edit and share your recipe!</h2>
+			<hr>
+	<div class="mb-4">
+  <input type="hidden" th:field="*{idRecetaOriginal}" />
+</div>
+
+<div class="mb-4">
+  <label class="font-weight-bold" for="nombre">Name</label><input type=text th:field="*{nombre}" />
+</div>
+<div class="mb-4">
+  <label class="font-weight-bold" for="photo">Photo</label>
+					<input type=file name="archivo" id="archivo" />
+</div>
+<div class="mb-4">
+  <label class="font-weight-bold" for="ingredientes">Ingredients</label>
+					<input type=text th:field="*{ingredientes}" />
+</div>
+<div class="mb-4">
+  <label class="font-weight-bold text-center" for="descripcion">Description</label>
+					<textarea th:field="*{descripcion}" rows="3"></textarea>
+</div>
+
+<button type="submit" title="Signup" class="btn btn-warning mb-5"><i class="fas fa-share"></i></button>
+</form>
+</div>
+
+
+
 
 	<script
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

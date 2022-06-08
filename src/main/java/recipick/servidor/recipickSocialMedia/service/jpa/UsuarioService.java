@@ -30,9 +30,9 @@ public class UsuarioService implements IUsuarioService {
 	}
 
 	@Override
-	public void eliminar(int isUsuario) {
-		repoUsuario.deleteById(isUsuario);
+	public void eliminar(Integer idUsuario) {
 		
+		repoUsuario.deleteById(idUsuario);
 	}
 
 	@Override
@@ -50,7 +50,9 @@ public class UsuarioService implements IUsuarioService {
 	@Override
 	public Usuario buscarPorUsername(String username) {
 		
-		return this.repoUsuario.findUsuarioByUsername(username);
+		return this.repoUsuario.findByUsername(username);
 	}
+
+	
 
 }

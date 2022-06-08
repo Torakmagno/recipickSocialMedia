@@ -10,7 +10,7 @@ public interface IUsuarioService {
 	List<Usuario> buscarTodos();
 
 	Usuario guardar(Usuario usuario);
-	void eliminar(int idUsuario);
+	void eliminar(Integer idUsuario);
 	
 	void like(int idReceta, Usuario usuario);
 	void dislike(int idReceta, Usuario usuario);

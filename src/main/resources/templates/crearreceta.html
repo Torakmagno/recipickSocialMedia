@@ -20,16 +20,16 @@
 <body>
 	<header th:insert="fragments/menu :: menu-principal"></header>
 
-
+	
 	<main role="main">
 		<hr>
 		<div class="container">
-
-			<div class="card">
-				<h4 class="card-header">
-					<strong>New recipe</strong>
-				</h4>
+		<br>
+		<br>
+		<br>
+			<div class="d-flex justify-content-around align-items-center ">
 				<div class="card-body">
+				<h4><strong>New recipe</strong></h4>
 					<form th:action="@{/home/recipes/save}" method="post"
 						th:object="${receta}" enctype="multipart/form-data">
 						<div th:if="${#fields.hasErrors('*')}" class='alert alert-danger'
@@ -76,8 +76,8 @@
 								</div>
 							</div>
 						</div>
-						<td><input class="btn btn-warning" type="submit" value="Create" /><i
-					class="fas fa save-alt"></i></td>
+						<button type="submit" title="Signup" class="btn btn-warning"><i class="fas fa-save"></i></button>
+
 					</form>
 				</div>
 			</div>

@@ -1,5 +1,5 @@
 <nav th:fragment="menu-principal"
-	class="navbar navbar-expand-md fixed-top bg-secondary bg-gradient">
+	class="navbar navbar-expand-md fixed-top bg-secondary bg-dark">
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarsExampleDefault"
 		aria-controls="navbarsExampleDefault" aria-expanded="false"
@@ -7,23 +7,31 @@
 		<span class="navbar-toggler-icon"></span>
 	</button>
 	<div class="collapse navbar-collapse " id="navbarsExampleDefault">
-		<img id="logomenu" class="mr-2" th:src="@{~/images/logos/logo3.png}">
-		<a class="nav-link text-white btn btn-warning nav-item" th:href="@{/}">Home</a>&nbsp;
-		<a class="nav-link text-white btn btn-primary nav-item"
+
+		<!--  <a class="nav-link text-white btn btn-warning nav-item" th:href="@{/}">Home</a>&nbsp;-->
+		<a class=" h3 nav-link text-warning font-italic nav-item"
 			th:href="@{/home/recipes}">Recipes</a>&nbsp; <a
-			class="nav-link text-white btn btn-danger nav-item"
+			class=" h3 nav-link text-warning font-italic nav-item"
 			th:href="@{/users/userslist}">Users</a>&nbsp;
 	</div>
-	<h2 class="font-italic text-warning">Recipick Social Media</h2>
-
+	<a th:href="@{/}"><img id="logomenu"
+		th:src="@{~/images/logos/logoamarillo.png}"></a>
 	<div
 		class="collapse navbar-collapse d-flex flex-row justify-content-end ">
+		<span class="text-warning h4 mt-1">Welcome</span>&nbsp;&nbsp;<span
+			class="text-white font-italic text-uppercase"
+			sec:authentication="name"></span>&nbsp;&nbsp;
+		<!--    sec:authentication="name"-->
 		<a class="btn btn-success" th:href="@{/login}">Login</a>&nbsp; <a
-			class="btn btn-primary" th:href="@{/signup}">Sign up</a>&nbsp; <span
-			class="text-light">Bienvenido</span>&nbsp;<span class="text-light"
-			sec:authentication="name"></span>&nbsp;
+			class="btn btn-warning" th:href="@{/signup}">Sign up</a>&nbsp;
 		<!--    sec:authentication="name"-->
 		<a class="btn btn-danger" th:href="@{/logout}">Logout</a>&nbsp;
+		<form class="d-flex" role="search">
+			<input class="form-control me-2 ml-5" type="search"
+				placeholder="Search" aria-label="Search">&nbsp;
+			<button class="btn btn-outline-warning" type="submit">Search</button>
+		</form>
+
 	</div>
 </nav>
 <hr>

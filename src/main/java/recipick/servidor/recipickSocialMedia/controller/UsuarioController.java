@@ -38,7 +38,7 @@ public class UsuarioController {
   		// Eliminamos el usuario
       	UsuarioService.eliminar(idUsuario);			
   		attributes.addFlashAttribute("msg", "User deleted!");
-  		return "redirect:/listausuarios";
+  		return "redirect:/users/userslist";
   	}
    
   /* @GetMapping("/demo-bcrypt")

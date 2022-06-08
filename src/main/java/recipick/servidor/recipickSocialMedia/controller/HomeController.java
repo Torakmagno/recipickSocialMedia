@@ -99,7 +99,7 @@ public class HomeController {
 				
 		attributes.addFlashAttribute("msg", "User correctly registered!");
 		
-		return "redirect:/recipes";
+		return "redirect:/users/userslist";
 	}
 	
 	/*@GetMapping("/bcrypt/{texto}")
