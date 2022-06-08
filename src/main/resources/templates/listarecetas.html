@@ -17,11 +17,6 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link>
 <link rel="stylesheet" th:href="@{~/css/imagenes.css}">
-<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-<!-- Custom styles for this template -->
-<link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
-<link th:href="@{/bootstrap/css/sticky-footer-navbar.css}"
-	rel="stylesheet">
 <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
 	rel="stylesheet">
 </head>
@@ -58,8 +53,14 @@
 					<td th:text="${receta.nombre}"></td>
 					<td><img th:src="@{~/images/{img} (img=${receta.imagen})}"
 						alt="receta" class="recetaimagen"></td>
-					<td th:text="${receta.ingredientes}"></td>
-					<td th:text="${receta.descripcion}"></td>
+					<td>
+						<div class="collapse" th:id="${'collapseReceta-' + receta.id}"
+							aria-expanded="false" th:text="${receta.ingredientes}"></div>
+					</td>
+					<td>
+						<div class="collapse" th:id="${'collapseReceta-' + receta.id}"
+							aria-expanded="false" th:utext="${receta.descripcion}"></div>
+					</td>
 					<!--   <td th:text="${receta.usuario.username}"></td>-->
 					<td><a
 						th:href="@{/home/recipes/edit/{id}  (id=${receta.id}) }"
@@ -69,11 +70,14 @@
 								<i class="fas fa-share-alt mb-1" aria-hidden="true"></i> <i
 									class="fas fa-pencil-alt"></i>
 							</div>
-					</a><br> <br>
-					<a th:href="@{/home/recipes/delete/{id}  (id=${receta.id}) }"
+					</a><br> <br> <a
+						th:href="@{/home/recipes/delete/{id}  (id=${receta.id}) }"
+						th:if="${#authentication.getPrincipal().getUsername().equals(receta.usuario.username)}"
 						onclick="return confirm('Are you sure?')"
 						class="btn btn-danger btn-sm" role="button" title="Delete"><i
-							class="fas fa-trash" aria-hidden="true"></i></a></td>
+							class="fas fa-trash" aria-hidden="true"></i></a><a role="button" class="btn text-warning bold font-weight-bold collapsed" data-toggle="collapse"
+						th:href="${'#collapseReceta-' + receta.id}" aria-expanded="false"
+						th:aria-controls="${'collapseReceta-' + receta.id}"></a></td>
 				</tr>
 			</table>
 
@@ -113,7 +117,8 @@
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </body>
 </html>

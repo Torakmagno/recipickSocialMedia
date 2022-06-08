@@ -90,10 +90,16 @@ public class RecetaController {
 	}
 	
 	@GetMapping("/recipes/delete/{id}")
-	public String eliminar(@PathVariable("id") int idReceta, RedirectAttributes attributes) {
-		System.out.println("Deleting recipe with id: " + idReceta);
-		RecetaService.eliminar(idReceta);
-		attributes.addFlashAttribute("msg","Recipe correctly deleted");
+	public String eliminar(@PathVariable("id") int idReceta, RedirectAttributes attributes, Authentication auth) {
+		Receta elim = RecetaService.buscarPorId(idReceta);
+
+		if(auth.getAuthorities().contains("ADMIN") || auth.getName().equals(elim.getUsuario().getUsername())) {
+			System.out.println("Deleting recipe with id: " + idReceta);
+			RecetaService.eliminar(idReceta);
+			attributes.addFlashAttribute("msg", "Recipe correctly deleted");
+		} else {
+			attributes.addFlashAttribute("msg", "You can't delete this recipe");
+		}
 		return "redirect:/home/recipes";
 	}
 	

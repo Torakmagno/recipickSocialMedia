@@ -48,4 +48,13 @@ public class UsuarioController {
 	   System.out.println("Password encriptado: " + encriptado);
 	   return "usuarios/demo";
    } */
+   
+   @GetMapping("/{id}")
+   public String getProfile(@PathVariable("id") String id, Model model) {
+	   Usuario u = UsuarioService.buscarPorUsername(id);
+	   
+	   model.addAttribute("profile", u);
+	   
+	   return "profile";
+   }
 }

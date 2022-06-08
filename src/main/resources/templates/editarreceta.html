@@ -1,67 +1,97 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Edit or share your recipe!</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link>
-<link rel="stylesheet" th:href="@{~/css/imagenes.css}">
-<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-<!-- Custom styles for this template -->
-<link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
-<link th:href="@{/bootstrap/css/sticky-footer-navbar.css}"
-	rel="stylesheet">
-<link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-	rel="stylesheet">
+    <meta charset="ISO-8859-1">
+    <title>Edit or share your recipe!</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          rel="stylesheet">
+    <script src="//cdn.ckeditor.com/4.19.0/basic/ckeditor.js"></script>
+    <link rel="stylesheet" th:href="@{~/css/imagenes.css}">
 </head>
 
 
 <body>
-	<header th:insert="fragments/menu :: menu-principal"></header>
-	<br>
-	<br>
-	<br>
-	<div class="d-flex justify-content-center ">
-	<form th:action="@{/home/recipes/save}" method="post" th:object="${receta}" enctype="multipart/form-data">
-			<h2 class="font-italic mt-5">Edit and share your recipe!</h2>
-			<hr>
-	<div class="mb-4">
-  <input type="hidden" th:field="*{idRecetaOriginal}" />
+<header th:insert="fragments/menu :: menu-principal"></header>
+
+<main role="main">
+<div class="container">
+
+    <div class="card">
+        <h4 class="card-header">
+            <strong>Edit or share your recipe!</strong>
+        </h4>
+        <div class="card-body">
+            <form th:action="@{/home/recipes/save}" method="post"
+                  th:object="${receta}" enctype="multipart/form-data">
+
+                <div th:if="${#fields.hasErrors('*')}" class='alert alert-danger'
+                     role='alert'>
+                    There are errors, please fix them:
+                    <ul>
+                        <li th:each="err : ${#fields.errors('*')}" th:text="${err}"/>
+                    </ul>
+                </div>
+
+                <input type="hidden" th:field="*{idRecetaOriginal}"/>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nombre">Name</label> <input type="text" th:field="*{nombre}"
+                                                                    class="form-control" id="nombre" name="nombre"
+                                                                    placeholder="Write the name of the recipe"
+                                                                    required="required">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="descripcion">Picture</label><br>
+                            <input type="file" id="archivo" name="archivo">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nombre">Ingredients</label> <input type="text" th:field="*{ingredientes}"
+                                                                           class="form-control" id="ingredientes"
+                                                                           name="ingredientes"
+                                                                           placeholder="Write the ingredients of the recipe"
+                                                                           required="required">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="descripcion">Description</label>
+                            <textarea
+                                    class="form-control" th:field="*{descripcion}" id="descripcion" name="descripcion"
+                                    placeholder="Write the description of the recipe"
+                                    required="required"></textarea>
+                        </div>
+                        <script>CKEDITOR.replace( 'descripcion' );</script>
+                    </div>
+                </div>
+               <button type="submit" title="Save" class="btn btn-warning"><i class="fas fa-save"></i></button>
+            </form>
+        </div>
+    </div>
 </div>
+</main>
+<script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<footer th:insert="fragments/footer :: pie-pagina" class="footer"></footer>
 
-<div class="mb-4">
-  <label class="font-weight-bold" for="nombre">Name</label><input type=text th:field="*{nombre}" />
-</div>
-<div class="mb-4">
-  <label class="font-weight-bold" for="photo">Photo</label>
-					<input type=file name="archivo" id="archivo" />
-</div>
-<div class="mb-4">
-  <label class="font-weight-bold" for="ingredientes">Ingredients</label>
-					<input type=text th:field="*{ingredientes}" />
-</div>
-<div class="mb-4">
-  <label class="font-weight-bold text-center" for="descripcion">Description</label>
-					<textarea th:field="*{descripcion}" rows="3"></textarea>
-</div>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
-<button type="submit" title="Signup" class="btn btn-warning mb-5"><i class="fas fa-share"></i></button>
-</form>
-</div>
-
-
-
-
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-	<footer th:insert="fragments/footer :: pie-pagina" class="footer"></footer>
-
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 
 </body>
 </html>

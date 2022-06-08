@@ -40,3 +40,21 @@ line-height: 1.5;
 border-radius: .25rem;
 }
 
+
+.collapse:not(.show) {
+  display: block;
+  height: 6rem;
+  overflow: hidden;
+}
+
+.collapsing {
+  height: 6rem;
+}
+
+a.collapsed[href*=collapseReceta]::after {
+  content: '+ Show More';
+}
+
+ a:not(.collapsed)[href*=collapseReceta]::after {
+  content: '- Show Less';
+}

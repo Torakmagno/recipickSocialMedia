@@ -1,5 +1,5 @@
 <nav th:fragment="menu-principal"
-	class="navbar navbar-expand-md fixed-top bg-secondary bg-dark">
+	class="navbar navbar-expand-md bg-secondary bg-dark">
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarsExampleDefault"
 		aria-controls="navbarsExampleDefault" aria-expanded="false"
@@ -11,6 +11,7 @@
 		<!--  <a class="nav-link text-white btn btn-warning nav-item" th:href="@{/}">Home</a>&nbsp;-->
 		<a class=" h3 nav-link text-warning font-italic nav-item"
 			th:href="@{/home/recipes}">Recipes</a>&nbsp; <a
+			sec:authorize="hasAuthority('ADMIN')"
 			class=" h3 nav-link text-warning font-italic nav-item"
 			th:href="@{/users/userslist}">Users</a>&nbsp;
 	</div>
@@ -18,14 +19,14 @@
 		th:src="@{~/images/logos/logoamarillo.png}"></a>
 	<div
 		class="collapse navbar-collapse d-flex flex-row justify-content-end ">
-		<span class="text-warning h4 mt-1">Welcome</span>&nbsp;&nbsp;<span
+		<span class="text-warning h4 mt-1"  sec:authorize="isAuthenticated()" >Welcome</span>&nbsp;&nbsp;<span
 			class="text-white font-italic text-uppercase"
-			sec:authentication="name"></span>&nbsp;&nbsp;
+			sec:authentication="name"  sec:authorize="isAuthenticated()"></span>&nbsp;&nbsp;
 		<!--    sec:authentication="name"-->
-		<a class="btn btn-success" th:href="@{/login}">Login</a>&nbsp; <a
-			class="btn btn-warning" th:href="@{/signup}">Sign up</a>&nbsp;
+		<a class="btn btn-success"  sec:authorize="!isAuthenticated()" th:href="@{/login}">Login</a>&nbsp; <a
+			class="btn btn-warning"  sec:authorize="!isAuthenticated()" th:href="@{/signup}">Sign up</a>&nbsp;
 		<!--    sec:authentication="name"-->
-		<a class="btn btn-danger" th:href="@{/logout}">Logout</a>&nbsp;
+		<a class="btn btn-danger"  sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a>&nbsp;
 		<form class="d-flex" role="search">
 			<input class="form-control me-2 ml-5" type="search"
 				placeholder="Search" aria-label="Search">&nbsp;

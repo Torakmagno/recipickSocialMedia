@@ -64,8 +64,15 @@ public PasswordEncoder passwordEncoder() {
 */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-    	http.authorizeRequests().antMatchers("/**").authenticated()
-        .and().formLogin();
+    	http
+				.authorizeRequests()
+				.antMatchers("/").permitAll()
+				.antMatchers("/images/**").permitAll()
+				.antMatchers("/css/**").permitAll()
+				.antMatchers("/signup/**").permitAll()
+				.antMatchers("/users/**").hasAuthority("ADMIN")
+				.antMatchers("/**").authenticated()
+        		.and().formLogin();
     }
 
   

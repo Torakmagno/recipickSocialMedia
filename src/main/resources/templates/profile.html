@@ -1,0 +1,90 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>New recipe</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="//cdn.ckeditor.com/4.19.0/basic/ckeditor.js"></script>
+<link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+	rel="stylesheet">
+<link rel="stylesheet" th:href="@{~/css/imagenes.css}">
+<link rel="stylesheet" th:href="@{~/css/profile.css}">
+</head>
+
+
+<body>
+	<header th:insert="fragments/menu :: menu-principal"></header>
+
+	<div class="row mt-2" id="reciBody">
+		<div class="col-xl-9 col-md-9 col-sm-10 mx-auto">
+
+			<!-- Profile widget -->
+			<div class="bg-white shadow rounded overflow-hidden">
+				<div class="px-4 pt-4 bg-dark">
+					<div class="media align-items-end profile-header">
+						<div class="media-body text-white">
+							<h4 class="mt-0 mb-0"
+								th:text="${profile.nombre + ' ' + profile.apellidos}">Recipick
+								user</h4>
+							<p class="small mb-4">
+								<i class="fa fa-map-marker mr-2"></i>Recipick user
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="bg-light p-4 d-flex justify-content-end text-center">
+					<ul class="list-inline mb-0">
+						<li class="list-inline-item">
+							<h5 class="font-weight-bold mb-0 d-block"
+								th:text="${profile.recetas.size()}">241</h5>
+							<small class="text-muted"> <i
+								class="fa fa-picture-o mr-1"></i>Posts
+						</small>
+						</li>
+					</ul>
+				</div>
+
+				<div class="py-4 px-4">
+					<div class="d-flex align-items-center justify-content-between mb-3">
+						<h5 class="mb-0">Recent posts</h5>
+						<a th:href="@{/home/recipes}" class="btn btn-link text-muted">Show all</a>
+					</div>
+
+
+					<div class="row">
+						
+						<div class="col-lg-4" th:each="receta : ${profile.recetas}">
+							<div class="image-wrap-2 text-warning">
+								<a class="image-info font-italic text-warning" th:href="@{/home/recipes}">
+									<h2 class="mb-3" th:text="${receta.nombre}"></h2>
+																	</div>
+								<img  th:src="@{~/images/{img} (img=${receta.imagen})}" class="img-fluid">
+							</a>
+					</div>
+					
+					</div>
+
+
+
+				</div>
+			</div>
+			<!-- End profile widget -->
+
+		</div>
+	</div>
+	
+	
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<footer th:insert="fragments/footer :: pie-pagina" class="footer"></footer>
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	
+</body>
+</html>
