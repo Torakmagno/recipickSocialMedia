@@ -28,8 +28,8 @@ Necesitas tener instalado:
 ## Tecnologías utilizadas
 |  Tecnología | Función |
 |-------------------|---------|
-CKEditor | Editor de texto enriquecido
-*Visual Studio Code*  | Editor de código fuente
+*CKEditor* | Editor de texto enriquecido
+*Mysql*  | Creación de la BBDD
 *Spring boot*                 | Framework Java que facilita la creación de API
 
 
